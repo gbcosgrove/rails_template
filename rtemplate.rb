@@ -2,7 +2,7 @@ gem 'haml-rails'
 gem 'thin'
 
 gem_group :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails'
   gem "rails-erd"
   gem 'simplecov'
   gem 'shoulda-matchers'
@@ -39,21 +39,22 @@ file 'README.md', <<-CODE
 CODE
 
 file 'app/controllers/home_controller.rb', <<-CODE
-  class HomeController < ApplicationController
-  end
+class HomeController < ApplicationController
+end
 CODE
 
-file 'app/views/homes/index.html.haml', <<-CODE
+file 'app/views/home/index.html.haml', <<-CODE
+<h2>You are home!</h2>
 CODE
 
 route "root to: 'home#index'"
 
 file 'app/controllers/ui_controller.rb', <<-CODE
-  class UiController < ApplicationController
-     before_action do
-      redirect_to root_path
-    end
+class UiController < ApplicationController
+   before_action do
+    redirect_to root_path
   end
+end
 CODE
 
 route "get 'ui(/:action)', controller: 'ui'"
