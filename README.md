@@ -3,6 +3,16 @@
 <h3>Description</h3>
 >Installs gems and changes directory structure for how I develop rails applications
 
+<h3>Usage</h3>
+><i>Directly from the repository:</i><br />
+>
+>rails new <b>app_name</b> -m https://raw.githubusercontent.com/vmcilwain/rails_template/<b>version</b>/rtemplate.rb
+>
+><i>If cloned</i><br />
+>
+>rails new <b>app_name</b> -m rails_tempalte/rtemplate.rb
+
+
 <h3>Gems to install</h3>
 
 <ul>
