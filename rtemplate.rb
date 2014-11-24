@@ -25,6 +25,10 @@ generate 'rspec:install'
 
 run "rm README.rdoc"
 run "rm -rf test"
+run 'mkdir spec/fabricators'
+run 'mkdir spec/features'
+run 'mkdir spec/models'
+run 'mkdir spec/controllers'
 
 file 'README.md', <<-CODE
   <h3>Problem:</h3>
