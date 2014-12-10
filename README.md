@@ -12,9 +12,11 @@
 >
 >rails new <b>app_name</b> -T -m rails_template/rtemplate.rb
 >
-> -T = Do not generate test unit. Is equivalent to - -skip-test-unit.
+>Options Explanation:
 >
-> -m = Use template found in location [URL or FileSystem]. Is equivalent to --template=TEMPLATE
+>-T = Do not generate test unit. Is equivalent to - -skip-test-unit.
+>
+>-m = Use template found in location [URL or FileSystem]. Is equivalent to --template=TEMPLATE
 
 
 <h3>Gems to install</h3>
