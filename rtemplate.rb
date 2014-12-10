@@ -26,7 +26,7 @@ run 'bundle install'
 generate 'rspec:install'
 
 run "rm README.rdoc"
-run "rm -rf test"
+# run "rm -rf test"
 run 'mkdir spec/fabricators'
 run 'mkdir spec/features'
 run 'mkdir spec/models'

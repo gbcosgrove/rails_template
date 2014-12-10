@@ -6,11 +6,15 @@
 <h3>Usage</h3>
 ><i>Directly from the repository:</i><br />
 >
->rails new <b>app_name</b> -m https://raw.githubusercontent.com/vmcilwain/rails_template/<b>version</b>/rtemplate.rb
+>rails new <b>app_name</b> -T -m https://raw.githubusercontent.com/vmcilwain/rails_template/<b>version</b>/rtemplate.rb
 >
 ><i>If cloned</i><br />
 >
->rails new <b>app_name</b> -m rails_tempalte/rtemplate.rb
+>rails new <b>app_name</b> -T -m rails_template/rtemplate.rb
+>
+> -T = Do not generate test unit. Is equivalent to - -skip-test-unit.
+>
+> -m = Use template found in location [URL or FileSystem]. Is equivalent to --template=TEMPLATE
 
 
 <h3>Gems to install</h3>
@@ -38,7 +42,6 @@
 <ul>
 	<li>Removes</li>
 	<ul>
-		<li>test</li>
 		<li>README.rdoc</li>
 	</ul>
 	<li>Adds</li>
@@ -48,6 +51,8 @@
 		<li>spec/features</li>
 		<li>spec/models</li>
 		<li>spec/controllers</li>
+		<li>spec/spec_helper.rb</li>
+		<li>spec/rails_helper.rb</li>
 		<li>app/controllers/home_controller</li>
 		<li>app/controllers/ui_controller</li>
 	</ul>
