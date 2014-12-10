@@ -43,7 +43,7 @@
 	</ul>
 	<li>Adds</li>
 	<ul>
-		<li>README.rdoc</li>
+		<li>README.md</li>
 		<li>spec/fabricators</li>
 		<li>spec/features</li>
 		<li>spec/models</li>
