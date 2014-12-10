@@ -30,9 +30,11 @@
 	<li><a href="https://github.com/nixme/pry-nav">pry-nav</a></li>
 	<li><a href="https://github.com/charliesome/better_errors" target='blank'>better_errors</a></li>
 	<li><a href="http://yardoc.com" target='blank'>yard</a></li>
+	<li><a href="https://github.com/vcr/vcr" target='blank'>VCR</a></li>
+	<li><a href="https://github.com/bblimke/webmock" target='blank'>Webmock</a></li>
 </ul>
 
-<h3>Directories and filesto be created</h3>
+<h3>Directories and files to be created</h3>
 <ul>
 	<li>Removes</li>
 	<ul>
