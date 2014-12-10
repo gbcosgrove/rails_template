@@ -27,7 +27,7 @@
 	<li><a href="https://github.com/colszowka/simplecov" target='blank'>simplecov</a></li>
 	<li><a href="https://github.com/thoughtbot/shoulda-matchers" target='blank'>shoulda-matchers</a></li>
 	<li><a href="http://www.fabricationgem.org" target='blank'>fabrication</a></li>
-	<li><a href="https://github.com/DatabaseCleaner/database_cleaner" target='blank'>database_cleaner</a> - <a href="http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/" target='blank'>configuring</a></li>
+	<li><a href="https://github.com/DatabaseCleaner/database_cleaner" target='blank'>database_cleaner</a> - <a href="http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/" target='blank'>configuring - by Avdi Grimm</a></li>
 	<li><a href="https://github.com/jnicklas/capybara" target='blank'>capybara</a></li>
 	<li><a href="https://github.com/stympy/faker" target='blank'>faker</a></li>
 	<li><a href="https://github.com/pry/pry" target='blank'>pry</a></li>
