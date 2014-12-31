@@ -74,9 +74,18 @@ route "root to: 'home#index'"
 file 'app/controllers/ui_controller.rb', <<-CODE
 class UiController < ApplicationController
    before_action do
-    redirect_to root_path
+    redirect_to :root if Rails.env.production?
   end
 end
 CODE
 
 route "get 'ui(/:action)', controller: 'ui'"
+
+file 'app/views/ui/index.html.haml', <<-CODE
+%section.ui-index
+  %ul
+    - Dir.glob('app/views/ui/*.html.haml').sort.each do |file|
+      - wireframe = File.basename(file,'.html.haml')
+      -  unless wireframe == 'index' || wireframe.match(/^_/)
+        %li= link_to wireframe.titleize, action: wireframe unless wireframe == 'index'
+CODE
