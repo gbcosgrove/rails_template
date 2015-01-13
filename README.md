@@ -24,6 +24,10 @@
 <ul>
 	<li><a href="https://github.com/indirect/haml-rails" target='blank'>haml-rails</a></li>
 	<li><a href="https://github.com/macournoyer/thin" target='blank'>thin</a></li>
+	<li><a href="https://github.com/kossnocorp/jquery.turbolinks" target='blank'>jquery-turbolinks</a></li>
+	<li><a href="https://github.com/activerecord-hackery/ransack" target='blank'>ransack</a></li>
+	<li><a href="https://github.com/laserlemon/figaro" target='blank'>figaro</a></li>
+	<li><a href="https://github.com/ryanb/letter_opener" target='blank'>letter_opener</a></li>
 	<li><a href="https://github.com/rspec/rspec-rails" target='blank'>rspec-rails</a></li>
 	<li><a href="https://github.com/voormedia/rails-erd" target='blank'>rails-erd</a></li>
 	<li><a href="https://github.com/colszowka/simplecov" target='blank'>simplecov</a></li>
@@ -37,7 +41,8 @@
 	<li><a href="https://github.com/charliesome/better_errors" target='blank'>better_errors</a></li>
 	<li><a href="http://yardoc.com" target='blank'>yard</a></li>
 	<li><a href="https://github.com/vcr/vcr" target='blank'>VCR</a></li>
-	<li><a href="https://github.com/bblimke/webmock" target='blank'>Webmock</a></li>
+	<li><a href="https://github.com/bblimke/webmock" target='blank'>webmock</a></li>
+	<li><a href="https://github.com/sztupy/selenium-webdriver" target='blank'>selenium-webdriver</a></li>
 </ul>
 
 <h3>Directories and files to be created</h3>

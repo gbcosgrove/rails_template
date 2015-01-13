@@ -1,5 +1,10 @@
 gem 'haml-rails'
 gem 'thin'
+gem 'jquery-turbolinks'
+gem "ransack"
+gem 'figaro'
+
+gem 'letter_opener', group: [:development]
 
 gem_group :test do
   gem 'rspec-rails'
@@ -11,6 +16,7 @@ gem_group :test do
   gem 'capybara'
   gem 'vcr'
   gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 gem_group :development, :test do
