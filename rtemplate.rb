@@ -1,5 +1,9 @@
 gem 'haml-rails'
 gem 'thin'
+gem 'jquery-turbolinks'
+gem "ransack"
+gem 'figaro'
+gem 'rufus-scheduler'
 
 gem_group :test do
   gem 'rspec-rails'
@@ -11,6 +15,10 @@ gem_group :test do
   gem 'capybara'
   gem 'vcr'
   gem 'webmock'
+end
+
+gem_group :development do
+  gem 'letter_opener'
 end
 
 gem_group :development, :test do
