@@ -44,7 +44,6 @@ yard | http://yardoc.com
 VCR | https://github.com/vcr/vcr
 Webmock | https://github.com/bblimke/webmock
 
-
 ###Directories and files to be created
 Removes
 -------------
