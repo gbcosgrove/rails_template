@@ -45,11 +45,9 @@ file 'README.md', <<-CODE
 > This application doesn't have any details yet.
 
 ###Development Phases
-Current Phase
--------------
-Design..In Progress
-Coding..Not Started
-Release..Not Started
+* Design..In Progress
+* Coding..Not Started
+* Release..Not Started
 
 ###Processes
 > TBD
@@ -58,13 +56,12 @@ Release..Not Started
 > HTML tables will be listed here soon as it is built. Also attached pdf will be in the repository once it all has been decided.
 
 ###Technical Stuff
-------------------
-Ruby Version | TBD
-Rails Version | TBD
-Dependencies | TBD
-DB Configuration | TBD
-Testing | TBD
-Services | TBD
+* Ruby Version | TBD
+* Rails Version | TBD
+* Dependencies | TBD
+* DB Configuration | TBD
+* Testing | TBD
+* Services | TBD
 CODE
 
 file 'app/controllers/home_controller.rb', <<-CODE
