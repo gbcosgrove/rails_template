@@ -45,18 +45,16 @@ VCR | https://github.com/vcr/vcr
 Webmock | https://github.com/bblimke/webmock
 
 ###Directories and files to be created
-Removes
--------------
-README.rdoc
+####Removes
+* README.rdoc
 
-Adds
--------
-README.md
-spec/fabricators
-spec/features
-spec/models
-spec/controllers
-spec/spec_helper.r
-spec/rails_helper.rb
-app/controllers/home_controller
-app/controllers/ui_controller
+####Adds
+* README.md
+* spec/fabricators
+* spec/features
+* spec/models
+* spec/controllers
+* spec/spec_helper.r
+* spec/rails_helper.rb
+* app/controllers/home_controller
+* app/controllers/ui_controller
