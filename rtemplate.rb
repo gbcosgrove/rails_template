@@ -1,10 +1,19 @@
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'autoprefixer-rails'
 gem 'haml-rails'
-gem 'thin'
+gem "puma"
 gem 'jquery-turbolinks'
 gem "ransack"
 gem 'figaro'
-gem 'rufus-scheduler'
-
+gem 'whenever'
+gem 'authenticatable', git: 'https://github.com/vmcilwain/authenticatable'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
+gem 'httparty'
+gem 'remotipart', '~> 1.2'
+gem 'will_paginate', '~> 3.0.6'
 
 gem 'letter_opener', group: [:development]
 
@@ -92,4 +101,80 @@ file 'app/views/ui/index.html.haml', <<-CODE
       - wireframe = File.basename(file,'.html.haml')
       -  unless wireframe == 'index' || wireframe.match(/^_/)
         %li= link_to wireframe.titleize, action: wireframe unless wireframe == 'index'
+CODE
+
+file 'SETUP.txt', <<-CODE
+Paperclip Setup For S3:
+=======================
+Development | Production Env File:
+config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
+  }
+
+Test Env File
+config.paperclip_defaults = {
+  :storage => :Filesystem,
+}
+  
+Migration:
+def self.up
+  change_table :photos do |t|
+    t.attachment :document
+  end
+end
+
+def self.down
+  remove_attachment :photos, :document
+end
+
+Model:
+has_attached_file :document, path: "#{Rails.env}/photos/:id/:basename.:extension", :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+Add an rspec macro for deleting test files once test has run
+
+def delete_files
+  `rm -rf #{Rails.root}/tmp/uploads`
+end
+---------------------------------------------------------------------------------
+Letter Opener
+=============
+Development Env
+# config.action_view.raise_on_missing_translations = true
+config.action_mailer.delivery_method = :letter_opener
+config.action_mailer.default_url_options = { host: 'localhost:3000' }
+Test Env
+config.action_mailer.delivery_method = :test
+config.action_mailer.default_url_options = { host: 'localhost:3000' }
+---------------------------------------------------------------------------------
+Bootstrap Saas - Instructions taken from http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1
+==============
+Rename app/assets/stylesheets/application.css to app/assets/stylesheets/application.css.sass. Then import the Bootstrap assets in your newly-renamed application.css.sass file.
+
+// app/assets/stylesheets/application.css.sass
+
+...
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+In the app/assets/javascripts/application.js add
+//= require bootstrap-sprockets
+It must be added after //= require jquery
+---------------------------------------------------------------------------------
+Twitter
+==============
+Create a twitter initializer with the following
+
+$twitter = Twitter::REST::Client.new do |config|
+  config.consumer_key        = ENV['CONSUMER_KEY']
+  config.consumer_secret     = ENV['CONSUMER_SECRET']
+  config.access_token        = ENV['ACCESS_TOKEN']
+  config.access_token_secret = ENV['ACCESS_SECRET']
+end
+
+Then you can call $twitter.update("whats up world!")
 CODE

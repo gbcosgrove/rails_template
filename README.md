@@ -20,29 +20,40 @@ rails new <b>app_name</b> -T -m rails_template/rtemplate.rb
 
 
 ###Gems to install
-Name | URL
----------|-------
-haml-rails | https://github.com/indirect/haml-rails
-thin | https://github.com/macournoyer/thin
-jquery-turbolinks | https://github.com/kossnocorp/jquery.turbolinks
-ransack | https://github.com/activerecord-hackery/ransack
-rufus-scheduler | https://github.com/jmettraux/rufus-scheduler
-figaro | https://github.com/laserlemon/figaro
-rspec-rails | https://github.com/rspec/rspec-rails
-rails-erd | https://github.com/voormedia/rails-erd
-simplecov | https://github.com/colszowka/simplecov
-shoulda-matchers | https://github.com/thoughtbot/shoulda-matchers
-fabrication | http://www.fabricationgem.org
-database_cleaner | https://github.com/DatabaseCleaner/database_cleaner
-configuring DB Cleaner - by Avdi Grimm | http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
-capybara | https://github.com/jnicklas/capybara
-faker | https://github.com/stympy/fake
-pry | https://github.com/pry/pry
-pry-nav | https://github.com/nixme/pry-nav
-better_errors | https://github.com/charliesome/better_errors
-yard | http://yardoc.com
-VCR | https://github.com/vcr/vcr
-Webmock | https://github.com/bblimke/webmock
+Name | URL | Reason
+---------|------- | ------------
+pg | https://rubygems.org/gems/pg | For heroku
+rails_12factor | https://rubygems.org/gems/rails_12factor | For Heroku
+bootstrap-sass | https://rubygems.org/gems/bootstrap-sass |
+autoprefixer-rails | https://rubygems.org/gems/autoprefixer-rails |
+haml-rails | https://github.com/indirect/haml-rails |
+puma | https://rubygems.org/gems/puma |
+jquery-turbolinks | https://github.com/kossnocorp/jquery.turbolinks |
+ransack | https://github.com/activerecord-hackery/ransack |
+whenever | https://rubygems.org/gems/whenever |
+figaro | https://github.com/laserlemon/figaro |
+authenticatable | https://github.com/vmcilwain/authenticatable | My own authentication engine |
+paperclip | https://rubygems.org/gems/paperclip |
+aws-sdk | https://rubygems.org/gems/aws-sdk | 
+httparty | https://rubygems.org/gems/httparty | API stuff |
+remotipart | https://rubygems.org/gems/remotipart | JS File uploading |
+will_paginate | https://rubygems.org/gems/will_paginate| 
+
+rspec-rails | https://github.com/rspec/rspec-rails |
+rails-erd | https://github.com/voormedia/rails-erd |
+simplecov | https://github.com/colszowka/simplecov |
+shoulda-matchers | https://github.com/thoughtbot/shoulda-matchers |
+fabrication | http://www.fabricationgem.org |
+database_cleaner | https://github.com/DatabaseCleaner/database_cleaner |
+configuring DB Cleaner - by Avdi Grimm | http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/ roadie | https://github.com/Mange/roadie | Inline email styling
+capybara | https://github.com/jnicklas/capybara |
+faker | https://github.com/stympy/fake |
+pry | https://github.com/pry/pry |
+pry-nav | https://github.com/nixme/pry-nav |
+better_errors | https://github.com/charliesome/better_errors |
+yard | http://yardoc.com |
+VCR | https://github.com/vcr/vcr |
+Webmock | https://github.com/bblimke/webmock |
 
 ###Directories and files to be created
 ####Removes
