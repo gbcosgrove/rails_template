@@ -28,6 +28,7 @@ gem_group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'selenium-webdriver'
+  gem "chromedriver-helper"
 end
 
 gem_group :development, :test do
@@ -103,6 +104,55 @@ file 'app/views/ui/index.html.haml', <<-CODE
         %li= link_to wireframe.titleize, action: wireframe unless wireframe == 'index'
 CODE
 
+file '.rspec', <<-CODE
+--color
+CODE
+
+file 'spec/support/database_cleaner.rb', <<-CODE
+#clear the test database out completely
+config.before(:suite) do
+  DatabaseCleaner.clean_with(:truncation)
+end
+
+#This part sets the default database cleaning strategy to be transactions
+config.before(:each) do
+  DatabaseCleaner.strategy = :transaction
+end
+
+#This line only runs before examples which have been flagged :js => true.
+config.before(:each, :js => true) do
+  DatabaseCleaner.strategy = :truncation
+end
+
+#These lines hook up database_cleaner around the beginning and end of each test
+config.before(:each) do
+  DatabaseCleaner.start
+end
+
+config.after(:each) do
+  DatabaseCleaner.clean
+end
+CODE
+
+file 'spec/support/chrome_web_driver.rb', <<-CODE
+if ENV['CHROME']
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+end
+CODE
+
+file 'config/initializers/twitter.rb', <<-CODE
+$twitter = Twitter::REST::Client.new do |config|
+  config.consumer_key        = ENV['CONSUMER_KEY']
+  config.consumer_secret     = ENV['CONSUMER_SECRET']
+  config.access_token        = ENV['ACCESS_TOKEN']
+  config.access_token_secret = ENV['ACCESS_SECRET']
+end
+
+#Then you can call $twitter.update("whats up world!")
+CODE
+
 file 'SETUP.txt', <<-CODE
 Paperclip Setup For S3:
 =======================
@@ -164,17 +214,13 @@ Rename app/assets/stylesheets/application.css to app/assets/stylesheets/applicat
 In the app/assets/javascripts/application.js add
 //= require bootstrap-sprockets
 It must be added after //= require jquery
----------------------------------------------------------------------------------
-Twitter
-==============
-Create a twitter initializer with the following
+--------------------------------------------------------------------------------
 
-$twitter = Twitter::REST::Client.new do |config|
-  config.consumer_key        = ENV['CONSUMER_KEY']
-  config.consumer_secret     = ENV['CONSUMER_SECRET']
-  config.access_token        = ENV['ACCESS_TOKEN']
-  config.access_token_secret = ENV['ACCESS_SECRET']
-end
+Rspec
+======
+require 'database_cleaner'
+require 'pry'
+require 'simplecov'
+SimpleCov.start
 
-Then you can call $twitter.update("whats up world!")
 CODE

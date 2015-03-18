@@ -65,7 +65,13 @@ Webmock | https://github.com/bblimke/webmock |
 * spec/features
 * spec/models
 * spec/controllers
-* spec/spec_helper.r
+* spec/spec_helper.rb
 * spec/rails_helper.rb
-* app/controllers/home_controller
-* app/controllers/ui_controller
+* app/controllers/home_controller.rb
+* app/views/home/index.html.haml
+* app/controllers/ui_controller.rb
+* app/views/ui/index.html.haml
+* config/initializers/twitter.rb
+* spec/support/database_cleaner.rb
+* spec/support/chrome_web_driver.rb
+* .rspec
