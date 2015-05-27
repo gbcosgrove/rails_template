@@ -883,7 +883,7 @@ file 'app/views/layouts/application.html.haml', <<-CODE
   %title DigitalTombstone
   =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   =javascript_include_tag 'application', 'data-turbolinks-track' => true
-  =csrf_meta_tags %>
+  =csrf_meta_tags
 %body
   =yield
 CODE
