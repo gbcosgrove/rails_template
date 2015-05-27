@@ -758,14 +758,13 @@ CODE
 
 file 'config/initializers/sendgrid.rb', <<-CODE
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'example.com',
-  user_name:            CONFIG[:sendgrid_username],
-  password:             CONFIG[:sendgrid_password],
-  authentication:       'plain',
-  enable_starttls_auto: true  }
+config.action_mailer.smtp_settings = { :address   => "smtp.sendgrid.net",
+                                      :port      => 587,
+                                      :domain    => "yourdomain.com",
+                                      :user_name => CONFIG[:sendgrid_username],
+                                      :password  => CONFIG[:sendgrid_password],
+                                      :authentication => 'plain',
+                                      :enable_starttls_auto => true }
 CODE
 
 ###
