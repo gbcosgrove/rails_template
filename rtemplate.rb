@@ -11,13 +11,14 @@ gem 'jquery-turbolinks'
 gem "ransack"
 gem 'whenever'
 gem 'delayed_job_active_record'
+gem 'daemons' #needed by delayed_job
 gem 'simple_auth_engine', git: 'https://github.com/vmcilwain/simple_auth_engine.git', tag: '0.0.2'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'httparty'
 gem 'remotipart', '~> 1.2'
 gem 'will_paginate', '~> 3.0.6'
-
+gem "font-awesome-rails"
 gem 'letter_opener', group: [:development]
 
 gem_group :development do
@@ -117,6 +118,39 @@ production:
   action_mailer_host: 'http://localhost'
   action_controller_host: 'http://localhost'
 CODE
+
+###
+#Setup config/environments/development.rb
+###
+inject_into_file 'config/environments/development.rb', after: "config.action_mailer.raise_delivery_errors = false" do
+  "
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = false
+  config.action_mailer.default_url_options = {host: CONFIG[:mailer_host]}
+  config.action_controller.default_url_options = { host: CONFIG[:controller_host] }
+  "
+end
+
+###
+#Setup config/environments/test.rb
+###
+inject_into_file 'config/environments/test.rb', after: "config.action_mailer.delivery_method = :test" do
+  "
+  config.action_mailer.default_url_options = {host: CONFIG[:mailer_host]}
+  config.action_controller.default_url_options = { host: CONFIG[:controller_host] }
+  "
+end
+
+###
+#Setup config/environments/production.rb
+###
+inject_into_file 'config/environments/production.rb', after: "config.active_record.dump_schema_after_migration = false" do
+  "
+  config.action_mailer.default_url_options = {host: CONFIG[:mailer_host]}
+  config.action_controller.default_url_options = { host: CONFIG[:controller_host] }
+  config.assets.compile = true
+  "
+end
 
 ###
 #Install capistrano
@@ -585,7 +619,6 @@ namespace :monit do
     end
   end
 
-
   desc 'restart monit appliation'
   task :reload do
     on roles(:app) do
@@ -717,6 +750,22 @@ $twitter = Twitter::REST::Client.new do |config|
 end
 
 #Then you can call $twitter.update("whats up world!")
+CODE
+
+###
+# Add sendgrid initializer
+###
+
+file 'config/initializers/sendgrid.rb', <<-CODE
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            '<username>',
+  password:             '<password>',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 CODE
 
 ###
@@ -863,20 +912,10 @@ def delete_files
   `rm -rf \#{Rails.root}/tmp/uploads`
 end
 ---------------------------------------------------------------------------------
-Letter Opener
-=============
-Development Env
-# config.action_view.raise_on_missing_translations = true
-config.action_mailer.delivery_method = :letter_opener
-config.action_mailer.default_url_options = { host: 'localhost:3000' }
-Test Env
-config.action_mailer.delivery_method = :test
-config.action_mailer.default_url_options = { host: 'localhost:3000' }
----------------------------------------------------------------------------------
 
 CODE
 run 'git init'
 run 'echo /coverage >> .gitignore'
 run 'echo /config/application.yml >> .gitignore'
 run 'git add --all'
-run 'git commit -m "initial commit'
+run "git commit -m 'initial commit'"
