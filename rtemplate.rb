@@ -885,7 +885,8 @@ file 'app/views/layouts/application.html.haml', <<-CODE
   =javascript_include_tag 'application', 'data-turbolinks-track' => true
   =csrf_meta_tags
 %body
-  =yield
+  .container
+    =yield
 CODE
 ###
 #Create instructions file
