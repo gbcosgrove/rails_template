@@ -753,19 +753,20 @@ end
 CODE
 
 ###
-# Add sendgrid initializer
+# Add sendgrid
 ###
 
-file 'config/initializers/sendgrid.rb', <<-CODE
+inject_into_file 'config/application.rb', after: 'class Application < Rails::Application' do
+  "
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = { :address   => "smtp.sendgrid.net",
+config.action_mailer.smtp_settings = { :address   => 'smtp.sendgrid.net',
                                       :port      => 587,
                                       :domain    => "yourdomain.com",
                                       :user_name => CONFIG[:sendgrid_username],
                                       :password  => CONFIG[:sendgrid_password],
                                       :authentication => 'plain',
                                       :enable_starttls_auto => true }
-CODE
+end
 
 ###
 #Add bootstrap
@@ -871,6 +872,21 @@ production:
   secret_token: <%= CONFIG[:secret_token]%>
 CODE
 
+###
+# Create app/views/layouts/application.html.haml
+###
+run 'rm app/views/layouts/application.html.erb'
+
+file 'app/views/layouts/application.html.haml', <<-CODE
+!!!
+%head
+  %title DigitalTombstone
+  =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  =javascript_include_tag 'application', 'data-turbolinks-track' => true
+  =csrf_meta_tags %>
+%body
+  =yield
+CODE
 ###
 #Create instructions file
 ###
