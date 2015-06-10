@@ -888,6 +888,38 @@ file 'app/views/layouts/application.html.haml', <<-CODE
   .container
     =yield
 CODE
+
+###
+# Update application helper
+###
+inject_into_file, after: 'module ApplicationHelper' do
+  "
+  # Long date format
+  #
+  # @param [Date] date the date object
+  # @return day date month year - hour:minutes AM/PM
+  def long_date(date)
+    h date.strftime(\"%A %d %B %Y - %H:%M %p\") rescue ''
+  end
+  
+  # Medium date format
+  #
+  # @param [Date] date the date object
+  # @return month/date/year at hour:minutes AM/PM
+  def medium_date(date)
+    h date.strftime(\"%m/%d/%Y at %H:%M %p\") rescue ''
+  end
+  
+  # Short date format
+  #
+  # @param [Date] date the date object
+  # @return year-month-date
+  def short_date(date)
+    h date.strftime(\"%Y-%m-%d\") rescue ''
+  end
+  "
+end
+
 ###
 #Create instructions file
 ###
