@@ -896,7 +896,7 @@ inject_into_file, after: 'module ApplicationHelper' do
   "
   # Long date format
   #
-  # @param [Date] date the date object
+  # @param date [Date] the date object
   # @return day date month year - hour:minutes AM/PM
   def long_date(date)
     h date.strftime(\"%A %d %B %Y - %H:%M %p\") rescue ''
@@ -904,7 +904,7 @@ inject_into_file, after: 'module ApplicationHelper' do
   
   # Medium date format
   #
-  # @param [Date] date the date object
+  # @param date [Date] the date object
   # @return month/date/year at hour:minutes AM/PM
   def medium_date(date)
     h date.strftime(\"%m/%d/%Y at %H:%M %p\") rescue ''
@@ -912,10 +912,18 @@ inject_into_file, after: 'module ApplicationHelper' do
   
   # Short date format
   #
-  # @param [Date] date the date object
+  # @param date [Date] the date object
   # @return year-month-date
   def short_date(date)
     h date.strftime(\"%Y-%m-%d\") rescue ''
+  end
+  
+  # US date format
+  #
+  # @param date [Date] the date object
+  # @return year-month-date
+  def us_date(date)
+    date.strftime("%m/%d/%Y at %H:%M %p") rescue ''
   end
   "
 end
